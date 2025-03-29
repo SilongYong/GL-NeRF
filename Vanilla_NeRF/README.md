@@ -13,7 +13,7 @@ pip install -r requirements.txt
 ## Training
 For NeRF-Synthetic dataset, run
 ```shell
-python run_nerf.py --expname <expname> --config-file /path/to/configs/<scene>.yaml --opts task train N_samples 64 N_importance 128
+python run_nerf.py --expname <expname> --config-file /path/to/configs/<scene>.yaml --opts task train N_samples 128 N_importance 64
 ```
 
 For LLFF dataset, run
@@ -29,16 +29,18 @@ Here `<expname>` is the name for your experiment and `<scene>` refers to the nam
   Vanilla:
 
   ```shell
-  python run_nerf.py --expname <expname> --config-file /path/to/configs/<scene>.yaml --opts task test N_samples 128 N_importance 64
+  python run_nerf.py --expname <expname> --config-file /path/to/configs/<scene>.yaml --opts task test N_samples 128 N_importance 64 ft_path </path/to/your/model>
   ```
+
+  Remember to change `N_samples` to 64 when running with LLFF.
 
   Gauss-Laguerre Quadrature:
 
   ```shell
-  python run_nerf.py --expname <expname> --config-file /path/to/configs/<scene>.yaml --opts task test_lag N_samples 128 N_importance 16
+  python run_nerf.py --expname <expname> --config-file /path/to/configs/<scene>.yaml --opts task test_lag N_samples 128 N_importance 16 ft_path </path/to/your/model>
   ```
 
-  Note we can also reduce the number of sample points used for Gauss-Laguerre quadrature and the performance drop is marginal. `16` is the number for producing the paper results regarding vanilla NeRF
+  Note we can also reduce the number of sample points used for Gauss-Laguerre quadrature and the performance drop is marginal. `16` is the number for producing the paper results regarding vanilla NeRF. Note that for vanilla sampling method, the total points for rendering the final output image is `N_samples + N_importance`, whereas for GL-NeRF it's only `N_importance`. `128` for `N_samples` help with accurately placing the final sample points for GL-NeRF regardless of dataset.
 
 ## Acknowledgements
 We would like to thank [NeRF-PyTorch](https://github.com/yenchenlin/nerf-pytorch/tree/master) for the useful code base.
