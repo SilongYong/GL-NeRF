@@ -1,0 +1,8 @@
+Vanilla_NeRF/ckpt
+Vanilla_NeRF/configs/*.txt
+Vanilla_NeRF/data
+Vanilla_NeRF/dataset/__pycache__
+Vanilla_NeRF/logs
+Vanilla_NeRF/model/__pycache__
+Vanilla_NeRF/utils/__pycache__
+Vanilla_NeRF/wandb

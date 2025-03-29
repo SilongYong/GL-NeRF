@@ -1,0 +1,65 @@
+expname: blender_paper_chair
+basedir: ./logs
+datadir: ./data/nerf_synthetic/chair
+dataset_type: blender
+
+# network architecture
+lr: 0.0005 # 5e-4
+lr_decay: 500
+chunk: 32768
+netchunk: 65536
+
+# setting
+no_batching: True
+no_reload: False
+ft_path: 'None' # /data/silong/consistent_view_synthesis/nerf-pytorch/logs/orig/200000.tar
+ckpt_dir: /home/silong/projects/opensource/GL-NeRF/Vanilla_NeRF/ckpt
+
+# rendering options
+perturb: 1.0
+use_viewdirs: True
+i_embed: 0
+multires: 10
+multires_views: 4
+raw_noise_std: 0
+render_only: False
+render_test: False
+render_factor: 0
+N_samples: 64
+N_importance: 16
+netdepth: 8
+netwidth: 256
+netdepth_fine: 8
+netwidth_fine: 256
+
+
+# training options
+precrop_iters: 500
+precrop_frac: 0.5
+bs: 1024
+
+# dataset options
+testskip: 8
+
+## deepvoxels flags
+shape: greek
+
+## blender flags
+white_bkgd: True
+half_res: True
+
+## llff flags
+factor: 8
+llffhold: 8
+no_ndc: False
+lindisp: False
+spherify: False
+
+# logging/saving options
+i_print: 100
+i_img: 1000
+i_weights: 40000
+i_testset: 50000
+i_video: 50000
+
+
